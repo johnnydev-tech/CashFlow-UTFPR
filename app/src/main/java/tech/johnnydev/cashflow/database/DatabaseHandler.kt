@@ -45,14 +45,14 @@ class DatabaseHandler(context: Context) : SQLiteOpenHelper(context, DATABASE_NAM
 
         if (cursor != null) {
             while (cursor.moveToNext()) {
-                val transacao = Transaction(
+                val transaction = Transaction(
                     id = cursor.getInt(cursor.getColumnIndexOrThrow(ID)),
                     type = TransactionType.valueOf(cursor.getString(cursor.getColumnIndexOrThrow(TYPE))),
                     detail = cursor.getString(cursor.getColumnIndexOrThrow(DETAIL)),
                     value = cursor.getDouble(cursor.getColumnIndexOrThrow(VALUE)),
                     date = cursor.getString(cursor.getColumnIndexOrThrow(DATE))
                 )
-                transactions.add(transacao)
+                transactions.add(transaction)
             }
         }
         cursor.close()
