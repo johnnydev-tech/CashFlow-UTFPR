@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">CashFlow</string>
+    <string name="value">Valor</string>
+    <string name="type">Tipo</string>
+    <string name="details">Detalhes</string>
+    <string name="date">Data</string>
+    <string name="launch">Lançar</string>
+    <string name="see_launchs">Ver Lançamentos</string>
+    <string name="balance">Ver Saldo</string>
 </resources>

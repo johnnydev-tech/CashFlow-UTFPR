@@ -5,4 +5,5 @@ data class Transaction(
     val detail: String,
     val value: Double,
     val date: String,
+    val id: Int = 0
 )
