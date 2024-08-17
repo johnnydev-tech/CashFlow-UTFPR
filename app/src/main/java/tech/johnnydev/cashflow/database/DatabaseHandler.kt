@@ -4,6 +4,7 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import tech.johnnydev.cashflow.entity.Balance
 import tech.johnnydev.cashflow.entity.Transaction
 import tech.johnnydev.cashflow.entity.TransactionType
 
@@ -57,6 +58,24 @@ class DatabaseHandler(context: Context) : SQLiteOpenHelper(context, DATABASE_NAM
         }
         cursor.close()
         return transactions
+    }
+
+
+    fun getBalance(): Balance {
+        val db = this.readableDatabase
+
+
+        val creditCursor = db.rawQuery("SELECT SUM($VALUE) FROM $TABLE_NAME WHERE $TYPE = ?", arrayOf(TransactionType.CREDIT.name))
+        val debitCursor = db.rawQuery("SELECT SUM($VALUE) FROM $TABLE_NAME WHERE $TYPE = ?", arrayOf(TransactionType.DEBIT.name))
+
+
+        val creditSum = if (creditCursor.moveToFirst()) creditCursor.getDouble(0) else 0.0
+        val debitSum = if (debitCursor.moveToFirst()) debitCursor.getDouble(0) else 0.0
+
+        creditCursor.close()
+        debitCursor.close()
+
+        return Balance(credit = creditSum, debit = debitSum)
     }
 
     companion object {

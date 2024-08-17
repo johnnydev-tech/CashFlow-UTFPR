@@ -1,6 +1,7 @@
 package tech.johnnydev.cashflow
 
 
+
 import android.app.DatePickerDialog
 import android.content.Intent
 import android.icu.util.Calendar
@@ -42,12 +43,21 @@ class MainActivity : AppCompatActivity() {
         onSelectDate()
         createLaunch()
         onOpenLaunch()
+        onSeeBalance()
 
     }
 
     override fun onStart() {
         super.onStart()
         dbHandler = DatabaseHandler(this)
+    }
+
+    private fun onSeeBalance() {
+        binding.btSeeBalance.setOnClickListener {
+            val balance = dbHandler.getBalance()
+            Toast.makeText(this, "Crédito: ${balance.credit} - Débito: ${balance.debit}", Toast.LENGTH_LONG).show()
+        }
+
     }
 
     private fun onSelectDate() {
