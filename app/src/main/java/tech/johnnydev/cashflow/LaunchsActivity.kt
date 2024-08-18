@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
+import tech.johnnydev.cashflow.adapter.TransactionAdapter
 import tech.johnnydev.cashflow.database.DatabaseHandler
 import tech.johnnydev.cashflow.databinding.ActivityLaunchsBinding
 

@@ -1,9 +1,10 @@
-package tech.johnnydev.cashflow
+package tech.johnnydev.cashflow.adapter
 
-import android.util.Log
+
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import tech.johnnydev.cashflow.R
 import tech.johnnydev.cashflow.databinding.ItemTransactionBinding
 import tech.johnnydev.cashflow.entity.Transaction
 import tech.johnnydev.cashflow.entity.TransactionType
@@ -30,7 +31,7 @@ class TransactionAdapter(private val transactions: List<Transaction>) :
         fun bind(transaction: Transaction) {
             binding.textviewType.text = transaction.type.label
             binding.textviewDetail.text = transaction.detail
-            binding.textviewValue.text = transaction.value.toString()
+            binding.textviewValue.text = "R$ ${transaction.value}"
             binding.textviewDate.text = transaction.date
 
 
